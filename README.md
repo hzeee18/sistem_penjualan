@@ -25,7 +25,6 @@ Mau reset data contoh? Hapus database `db_monitoring_persediaan` di phpMyAdmin l
 | Notifikasi | Daftar peringatan otomatis + pengaturan batas hari peringatan/kritis dan interval pengecekan |
 | Monitoring Stok | Stok layak per barang vs stok minimum (Aman / Menipis / Habis) + rincian batch |
 | Monitoring Kedaluwarsa | Status per batch (Kedaluwarsa / Kritis / Peringatan / Aman) + pemusnahan batch kedaluwarsa |
-| Lacak Batch | Telusuri satu batch: mundur (batch bahan baku & supplier asal produk kemasan) dan maju (dipakai kemas ulang jadi batch apa, dikirim ke customer mana) + riwayat mutasi |
 | Barang Masuk | Penerimaan dari supplier: no. batch, jumlah, tanggal masuk, tanggal kedaluwarsa |
 | Kemas Ulang | Karung bahan baku dipecah jadi kemasan kecil; bahan diambil FEFO, kedaluwarsa hasil dihitung otomatis |
 | Barang Keluar | Pengiriman ke customer dengan FEFO + cetak Bukti Barang Keluar / Surat Jalan |
@@ -37,9 +36,6 @@ Mau reset data contoh? Hapus database `db_monitoring_persediaan` di phpMyAdmin l
 - `javax.swing.Timer` mengecek ulang database tiap N menit (default 5). Kalau ada peringatan baru, muncul popup + notifikasi Windows (System Tray).
 - Ikon lonceng di header menampilkan jumlah notifikasi yang belum dibaca.
 - Jenis: Sudah Kedaluwarsa, Hampir Kedaluwarsa (kritis ≤ 7 hari, peringatan ≤ 30 hari), Stok Habis, Stok Menipis.
-
-### Lacak batch (traceability)
-Setiap kemas ulang mencatat batch bahan baku yang dipakai (`kemas_ulang_detail`), dan setiap barang keluar mencatat batch yang dikirim (`barang_keluar_detail`). Dari situ halaman Lacak Batch bisa menelusuri asal bahan sampai supplier dan tujuan sampai customer. Klik dua kali batch di Monitoring Kedaluwarsa untuk langsung melacaknya.
 
 ### FEFO (First Expired First Out)
 Barang keluar dan kemas ulang selalu mengambil batch dengan tanggal kedaluwarsa paling dekat. Batch yang sudah kedaluwarsa tidak bisa dipakai.

@@ -37,7 +37,6 @@ public class Bootstrap extends JFrame {
     public static final String NOTIFIKASI = "notifikasi";
     public static final String MONITOR_STOK = "monitor_stok";
     public static final String MONITOR_EXP = "monitor_kedaluwarsa";
-    public static final String LACAK = "lacak_batch";
     public static final String BARANG_MASUK = "barang_masuk";
     public static final String KEMAS_ULANG = "kemas_ulang";
     public static final String BARANG_KELUAR = "barang_keluar";
@@ -165,12 +164,6 @@ public class Bootstrap extends JFrame {
         kontenLayout.show(konten, kunci);
     }
 
-    /** Buka halaman Lacak Batch langsung untuk batch tertentu. */
-    public void lacakBatch(int batchId) {
-        buka(LACAK);
-        ((LacakBatch) halaman.get(LACAK)).lacak(batchId);
-    }
-
     private Component buatHalaman(String kunci) {
         switch (kunci) {
             case DASHBOARD:
@@ -181,8 +174,6 @@ public class Bootstrap extends JFrame {
                 return new MonitorStok(this);
             case MONITOR_EXP:
                 return new MonitorKedaluwarsa(this);
-            case LACAK:
-                return new LacakBatch(this);
             case BARANG_MASUK:
                 return new BarangMasuk(this);
             case KEMAS_ULANG:
@@ -246,7 +237,6 @@ public class Bootstrap extends JFrame {
         seksi(list, "MONITORING");
         item(list, MONITOR_STOK, "Monitoring Stok", "stok");
         item(list, MONITOR_EXP, "Monitoring Kedaluwarsa", "jam");
-        item(list, LACAK, "Lacak Batch", "lacak");
         seksi(list, "TRANSAKSI");
         item(list, BARANG_MASUK, "Barang Masuk", "masuk");
         item(list, KEMAS_ULANG, "Kemas Ulang", "kemas");

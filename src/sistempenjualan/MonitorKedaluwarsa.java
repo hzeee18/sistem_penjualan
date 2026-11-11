@@ -28,8 +28,7 @@ public class MonitorKedaluwarsa extends javax.swing.JPanel implements Halaman {
         Theme.transparent(pnlHeader, pnlJudul, pnlAksi, pnlIsi, pnlKartu, pnlExpAtas, pnlFilter);
         Theme.title(lblJudul);
         Theme.subtitle(lblSubjudul);
-        Theme.secondary(btnRefresh, btnLacak);
-        btnLacak.setIcon(new Ikon("lacak", 16, Theme.TEXT));
+        Theme.secondary(btnRefresh);
         Theme.danger(btnMusnahkan);
         Theme.primary(btnCetak);
         btnRefresh.setIcon(new Ikon("refresh", 16, Theme.TEXT));
@@ -85,7 +84,7 @@ public class MonitorKedaluwarsa extends javax.swing.JPanel implements Halaman {
             lblAman.setText(String.valueOf(aman));
             lblAmanKet.setText("kedaluwarsa > " + batas[0] + " hari lagi");
             lblKeterangan.setText("Barang keluar & kemas ulang otomatis mengambil batch yang paling cepat kedaluwarsa (FEFO). "
-                    + "Klik dua kali sebuah batch untuk melacak asal bahan & tujuan pengirimannya.");
+                    + "Batch yang sudah kedaluwarsa tidak bisa dipakai dan sebaiknya dimusnahkan.");
             filter();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Gagal memuat data: " + e.getMessage());
@@ -118,30 +117,6 @@ public class MonitorKedaluwarsa extends javax.swing.JPanel implements Halaman {
         Theme.statusColumn(tblExp, 8);
         Theme.widths(tblExp, 110, 200, 100, 70, 60, 100, 100, 100, 110);
         lblExpJudul.setText("Daftar Batch (" + m.getRowCount() + ")");
-    }
-
-    private void klikTabel(java.awt.event.MouseEvent evt) {
-        if (evt.getClickCount() == 2) {
-            lacak();
-        }
-    }
-
-    /** Buka halaman Lacak Batch untuk batch yang dipilih (atau klik dua kali baris). */
-    private void lacak() {
-        int v = tblExp.getSelectedRow();
-        if (v < 0) {
-            app.buka(Bootstrap.LACAK);
-            return;
-        }
-        String batch = (String) tblExp.getModel().getValueAt(tblExp.convertRowIndexToModel(v), 0);
-        try {
-            Object[] r = Koneksi.one("SELECT id FROM batch WHERE no_batch = ?", batch);
-            if (r != null) {
-                app.lacakBatch(((Number) r[0]).intValue());
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Gagal membuka lacak batch: " + e.getMessage());
-        }
     }
 
     private void musnahkan() {
@@ -186,7 +161,6 @@ public class MonitorKedaluwarsa extends javax.swing.JPanel implements Halaman {
         lblSubjudul = new javax.swing.JLabel();
         pnlAksi = new javax.swing.JPanel();
         btnRefresh = new javax.swing.JButton();
-        btnLacak = new javax.swing.JButton();
         btnMusnahkan = new javax.swing.JButton();
         btnCetak = new javax.swing.JButton();
         pnlIsi = new javax.swing.JPanel();
@@ -240,14 +214,6 @@ public class MonitorKedaluwarsa extends javax.swing.JPanel implements Halaman {
                     }
                 });
         pnlAksi.add(btnRefresh);
-
-        btnLacak.setText("Lacak Batch");
-        btnLacak.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        btnLacakActionPerformed(evt);
-                    }
-                });
-        pnlAksi.add(btnLacak);
 
         btnMusnahkan.setText("Musnahkan Batch");
         btnMusnahkan.addActionListener(new java.awt.event.ActionListener() {
@@ -373,11 +339,6 @@ public class MonitorKedaluwarsa extends javax.swing.JPanel implements Halaman {
         pnlExpAtas.add(pnlFilter, java.awt.BorderLayout.EAST);
         cardExp.add(pnlExpAtas, java.awt.BorderLayout.NORTH);
 
-        tblExp.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        tblExpMouseClicked(evt);
-                    }
-                });
         spExp.setViewportView(tblExp);
         cardExp.add(spExp, java.awt.BorderLayout.CENTER);
 
@@ -390,10 +351,6 @@ public class MonitorKedaluwarsa extends javax.swing.JPanel implements Halaman {
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         muatData();
     }//GEN-LAST:event_btnRefreshActionPerformed
-
-    private void btnLacakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLacakActionPerformed
-        lacak();
-    }//GEN-LAST:event_btnLacakActionPerformed
 
     private void btnMusnahkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMusnahkanActionPerformed
         musnahkan();
@@ -431,13 +388,8 @@ public class MonitorKedaluwarsa extends javax.swing.JPanel implements Halaman {
         filter();
     }//GEN-LAST:event_cbStatusActionPerformed
 
-    private void tblExpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblExpMouseClicked
-        klikTabel(evt);
-    }//GEN-LAST:event_tblExpMouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCetak;
-    private javax.swing.JButton btnLacak;
     private javax.swing.JButton btnMusnahkan;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JPanel cardAman;
