@@ -71,7 +71,7 @@ public final class Theme {
         com.formdev.flatlaf.FlatLaf.setPreferredFontFamily(com.formdev.flatlaf.fonts.inter.FlatInterFont.FAMILY);
         com.formdev.flatlaf.FlatLaf.setPreferredSemiboldFontFamily(com.formdev.flatlaf.fonts.inter.FlatInterFont.FAMILY_SEMIBOLD);
         FlatLightLaf.setup();
-        UIManager.put("defaultFont", new javax.swing.plaf.FontUIResource(com.formdev.flatlaf.fonts.inter.FlatInterFont.FAMILY, Font.PLAIN, 14));
+        UIManager.put("defaultFont", new javax.swing.plaf.FontUIResource(com.formdev.flatlaf.fonts.inter.FlatInterFont.FAMILY, Font.PLAIN, 13));
         UIManager.put("Component.arc", 10);
         UIManager.put("Button.arc", 10);
         UIManager.put("TextComponent.arc", 10);
@@ -126,27 +126,27 @@ public final class Theme {
     }
 
     public static void title(JLabel l) {
-        l.setFont(font(Font.BOLD, 24f));
+        l.setFont(font(Font.BOLD, 21f));
         l.setForeground(TEXT);
     }
 
     public static void subtitle(JLabel l) {
-        l.setFont(font(Font.PLAIN, 14f));
+        l.setFont(font(Font.PLAIN, 12f));
         l.setForeground(MUTED);
     }
 
     public static void section(JLabel l) {
-        l.setFont(font(Font.BOLD, 16f));
+        l.setFont(font(Font.BOLD, 14.5f));
         l.setForeground(TEXT);
     }
 
     public static void label(JLabel l) {
-        l.setFont(font(Font.BOLD, 13f));
+        l.setFont(font(Font.BOLD, 11f));
         l.setForeground(new Color(0x374151));
     }
 
     public static void muted(JLabel l) {
-        l.setFont(font(Font.PLAIN, 13f));
+        l.setFont(font(Font.PLAIN, 12f));
         l.setForeground(MUTED);
     }
 
@@ -175,11 +175,11 @@ public final class Theme {
         if (card instanceof RoundedPanel) {
             ((RoundedPanel) card).setAccent(accent);
         }
-        judul.setFont(font(Font.BOLD, 12.5f));
+        judul.setFont(font(Font.BOLD, 11.5f));
         judul.setForeground(MUTED);
-        nilai.setFont(font(Font.BOLD, 30f));
+        nilai.setFont(font(Font.BOLD, 25f));
         nilai.setForeground(accent);
-        ket.setFont(font(Font.PLAIN, 13f));
+        ket.setFont(font(Font.PLAIN, 12f));
         ket.setForeground(MUTED);
         card.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
     }
@@ -187,7 +187,7 @@ public final class Theme {
     // ---- tombol
     private static void btn(JButton b, String style) {
         b.putClientProperty(FlatClientProperties.STYLE, style);
-        b.setFont(font(Font.BOLD, 14f));
+        b.setFont(font(Font.BOLD, 13f));
         b.setFocusPainted(false);
         b.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
         b.setMargin(new java.awt.Insets(7, 16, 7, 16));
@@ -256,19 +256,19 @@ public final class Theme {
     }
 
     public static void table(JTable t) {
-        t.setRowHeight(38);
+        t.setRowHeight(32);
         t.setShowVerticalLines(false);
         t.setShowHorizontalLines(true);
         t.setGridColor(new Color(0xEEF1EF));
         t.setIntercellSpacing(new java.awt.Dimension(0, 1));
         t.setFillsViewportHeight(true);
         t.setAutoCreateRowSorter(true);
-        t.setFont(font(Font.PLAIN, 14f));
+        t.setFont(font(Font.PLAIN, 13f));
         t.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         JTableHeader h = t.getTableHeader();
-        h.setFont(font(Font.BOLD, 13f));
+        h.setFont(font(Font.BOLD, 12f));
         h.setForeground(new Color(0x374151));
-        h.setPreferredSize(new java.awt.Dimension(0, 40));
+        h.setPreferredSize(new java.awt.Dimension(0, 34));
         h.setReorderingAllowed(false);
         t.setDefaultRenderer(Object.class, new CellRenderer());
         t.setDefaultRenderer(Number.class, new CellRenderer());
@@ -386,7 +386,7 @@ public final class Theme {
             fg = w[0];
             bg = w[1];
             l.setForeground(fg);
-            l.setFont(font(Font.BOLD, 12f));
+            l.setFont(font(Font.BOLD, 11f));
             l.setHorizontalAlignment(SwingConstants.CENTER);
             l.setBorder(BorderFactory.createEmptyBorder(0, 8, 0, 8));
             return l;

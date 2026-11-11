@@ -230,7 +230,7 @@ public class Bootstrap extends JFrame {
         JLabel nama = new JLabel("<html><b>" + Theme.NAMA_APP + "</b><br><span style='font-size:9px;color:#8FA89A'>"
                 + Theme.NAMA_PT + "</span></html>");
         nama.setForeground(Color.WHITE);
-        nama.setFont(Theme.font(Font.PLAIN, 14f));
+        nama.setFont(Theme.font(Font.PLAIN, 13f));
         brand.add(logo, BorderLayout.WEST);
         brand.add(nama, BorderLayout.CENTER);
         side.add(brand, BorderLayout.NORTH);
@@ -270,7 +270,7 @@ public class Bootstrap extends JFrame {
 
         JLabel versi = new JLabel("v2.0 • Java Swing");
         versi.setForeground(new Color(0x5E7568));
-        versi.setFont(Theme.font(Font.PLAIN, 12f));
+        versi.setFont(Theme.font(Font.PLAIN, 11.5f));
         versi.setBorder(BorderFactory.createEmptyBorder(10, 24, 16, 10));
         side.add(versi, BorderLayout.SOUTH);
         return side;
@@ -279,7 +279,7 @@ public class Bootstrap extends JFrame {
     private void seksi(JPanel list, String judul) {
         JLabel l = new JLabel(judul);
         l.setForeground(new Color(0x8FA89A));
-        l.setFont(Theme.font(Font.BOLD, 11.5f));
+        l.setFont(Theme.font(Font.BOLD, 11f));
         l.setBorder(BorderFactory.createEmptyBorder(10, 12, 4, 0));
         l.setAlignmentX(0f);
         list.add(l);
@@ -291,8 +291,8 @@ public class Bootstrap extends JFrame {
         b.setHorizontalAlignment(SwingConstants.LEFT);
         b.setIconTextGap(12);
         b.setAlignmentX(0f);
-        b.setMaximumSize(new Dimension(Integer.MAX_VALUE, 36));
-        b.setPreferredSize(new Dimension(200, 36));
+        b.setMaximumSize(new Dimension(Integer.MAX_VALUE, 34));
+        b.setPreferredSize(new Dimension(200, 34));
         b.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         b.setFocusPainted(false);
         b.addActionListener(e -> buka(kunci));
@@ -308,13 +308,13 @@ public class Bootstrap extends JFrame {
             b.putClientProperty(FlatClientProperties.STYLE,
                     "background:#2E7D5B; foreground:#FFFFFF; borderWidth:0; focusWidth:0; innerFocusWidth:0; arc:10;"
                     + "hoverBackground:#2E7D5B; pressedBackground:#22624A; margin:6,14,6,14");
-            b.setFont(Theme.font(Font.BOLD, 14f));
+            b.setFont(Theme.font(Font.BOLD, 13f));
             ik.setColor(Color.WHITE);
         } else {
             b.putClientProperty(FlatClientProperties.STYLE,
                     "background:#1C2B24; foreground:#D3DED8; borderWidth:0; focusWidth:0; innerFocusWidth:0; arc:10;"
                     + "hoverBackground:#26392F; pressedBackground:#2C4337; margin:6,14,6,14");
-            b.setFont(Theme.font(Font.PLAIN, 14f));
+            b.setFont(Theme.font(Font.PLAIN, 13f));
             ik.setColor(Theme.SIDEBAR_TEXT);
         }
         b.repaint();
@@ -329,7 +329,7 @@ public class Bootstrap extends JFrame {
 
         JLabel kiri = new JLabel(Theme.NAMA_PT + "   •   " + Theme.hariIni());
         Theme.muted(kiri);
-        kiri.setFont(Theme.font(Font.PLAIN, 14f));
+        kiri.setFont(Theme.font(Font.PLAIN, 13f));
         h.add(kiri, BorderLayout.WEST);
 
         JPanel kanan = new JPanel(new FlowLayout(FlowLayout.RIGHT, 12, 0));
@@ -355,7 +355,7 @@ public class Bootstrap extends JFrame {
         lblAvatar.setFont(Theme.font(Font.BOLD, 13f));
 
         lblNama = new JLabel("-");
-        lblNama.setFont(Theme.font(Font.BOLD, 14f));
+        lblNama.setFont(Theme.font(Font.BOLD, 13f));
         lblNama.setForeground(Theme.TEXT);
         lblRole = new JLabel("-");
         Theme.muted(lblRole);

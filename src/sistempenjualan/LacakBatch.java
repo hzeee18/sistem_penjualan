@@ -44,7 +44,7 @@ public class LacakBatch extends javax.swing.JPanel implements Halaman {
         Theme.statCard(cardExp, lblExpJudul, lblExp, lblExpKet, Theme.CAUTION);
         Theme.statCard(cardSisa, lblSisaJudul, lblSisa, lblSisaKet, Theme.INFO);
         for (javax.swing.JLabel l : new javax.swing.JLabel[]{lblBarang, lblSumber, lblExp, lblSisa}) {
-            l.setFont(Theme.font(java.awt.Font.BOLD, 19f));
+            l.setFont(Theme.font(java.awt.Font.BOLD, 17f));
         }
         for (javax.swing.JPanel c : new javax.swing.JPanel[]{cardBarang, cardSumber, cardExp, cardSisa}) {
             c.setCursor(java.awt.Cursor.getDefaultCursor());

@@ -25,13 +25,13 @@ public class Login extends javax.swing.JPanel {
 
         lblLogo.setIcon(new javax.swing.ImageIcon(Notifikasi.ikonTray().getScaledInstance(56, 56, java.awt.Image.SCALE_SMOOTH)));
         lblLogo.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 28, 0));
-        lblApp.setFont(Theme.font(Font.BOLD, 30f));
+        lblApp.setFont(Theme.font(Font.BOLD, 28f));
         lblApp.setForeground(Color.WHITE);
         lblPt.setFont(Theme.font(Font.PLAIN, 16f));
         lblPt.setForeground(new Color(0x9FC3AF));
         lblPt.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 0, 36, 0));
         for (javax.swing.JLabel l : new javax.swing.JLabel[]{lblFitur1, lblFitur2, lblFitur3}) {
-            l.setFont(Theme.font(Font.PLAIN, 14f));
+            l.setFont(Theme.font(Font.PLAIN, 13f));
             l.setForeground(new Color(0xD5E3DB));
             l.setIcon(new Ikon("default", 10, new Color(0x6BBF93)));
             l.setIconTextGap(12);
@@ -39,7 +39,7 @@ public class Login extends javax.swing.JPanel {
         }
 
         Theme.card(cardLogin, 36);
-        lblMasuk.setFont(Theme.font(Font.BOLD, 24f));
+        lblMasuk.setFont(Theme.font(Font.BOLD, 22f));
         lblMasuk.setForeground(Theme.TEXT);
         Theme.subtitle(lblMasukSub);
         Theme.label(lblUsername);
@@ -52,7 +52,7 @@ public class Login extends javax.swing.JPanel {
         Theme.primary(btnMasuk);
         btnMasuk.setPreferredSize(new java.awt.Dimension(0, 42));
         Theme.muted(lblInfo);
-        lblInfo.setFont(Theme.font(Font.PLAIN, 12.5f));
+        lblInfo.setFont(Theme.font(Font.PLAIN, 12f));
     }
 
     public void reset() {
