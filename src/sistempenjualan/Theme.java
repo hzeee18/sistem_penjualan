@@ -386,7 +386,7 @@ public final class Theme {
             fg = w[0];
             bg = w[1];
             l.setForeground(fg);
-            l.setFont(font(Font.BOLD, 11f));
+            l.setFont(font(Font.BOLD, 10f));
             l.setHorizontalAlignment(SwingConstants.CENTER);
             l.setBorder(BorderFactory.createEmptyBorder(0, 8, 0, 8));
             return l;
@@ -398,9 +398,9 @@ public final class Theme {
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2.setColor(getBackground());
             g2.fillRect(0, 0, getWidth(), getHeight());
-            int tw = getFontMetrics(getFont()).stringWidth(getText()) + 22;
+            int tw = getFontMetrics(getFont()).stringWidth(getText()) + 14;
             int w = Math.min(getWidth() - 8, tw);
-            int h = 24;
+            int h = 18;
             int x = (getWidth() - w) / 2;
             int y = (getHeight() - h) / 2;
             g2.setColor(bg);
