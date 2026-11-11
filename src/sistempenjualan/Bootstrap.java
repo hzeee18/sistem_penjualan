@@ -37,6 +37,7 @@ public class Bootstrap extends JFrame {
     public static final String NOTIFIKASI = "notifikasi";
     public static final String MONITOR_STOK = "monitor_stok";
     public static final String MONITOR_EXP = "monitor_kedaluwarsa";
+    public static final String LACAK = "lacak_batch";
     public static final String BARANG_MASUK = "barang_masuk";
     public static final String KEMAS_ULANG = "kemas_ulang";
     public static final String BARANG_KELUAR = "barang_keluar";
@@ -164,6 +165,12 @@ public class Bootstrap extends JFrame {
         kontenLayout.show(konten, kunci);
     }
 
+    /** Buka halaman Lacak Batch langsung untuk batch tertentu. */
+    public void lacakBatch(int batchId) {
+        buka(LACAK);
+        ((LacakBatch) halaman.get(LACAK)).lacak(batchId);
+    }
+
     private Component buatHalaman(String kunci) {
         switch (kunci) {
             case DASHBOARD:
@@ -174,6 +181,8 @@ public class Bootstrap extends JFrame {
                 return new MonitorStok(this);
             case MONITOR_EXP:
                 return new MonitorKedaluwarsa(this);
+            case LACAK:
+                return new LacakBatch(this);
             case BARANG_MASUK:
                 return new BarangMasuk(this);
             case KEMAS_ULANG:
@@ -221,7 +230,7 @@ public class Bootstrap extends JFrame {
         JLabel nama = new JLabel("<html><b>" + Theme.NAMA_APP + "</b><br><span style='font-size:9px;color:#8FA89A'>"
                 + Theme.NAMA_PT + "</span></html>");
         nama.setForeground(Color.WHITE);
-        nama.setFont(Theme.font(Font.PLAIN, 13f));
+        nama.setFont(Theme.font(Font.PLAIN, 14f));
         brand.add(logo, BorderLayout.WEST);
         brand.add(nama, BorderLayout.CENTER);
         side.add(brand, BorderLayout.NORTH);
@@ -237,6 +246,7 @@ public class Bootstrap extends JFrame {
         seksi(list, "MONITORING");
         item(list, MONITOR_STOK, "Monitoring Stok", "stok");
         item(list, MONITOR_EXP, "Monitoring Kedaluwarsa", "jam");
+        item(list, LACAK, "Lacak Batch", "lacak");
         seksi(list, "TRANSAKSI");
         item(list, BARANG_MASUK, "Barang Masuk", "masuk");
         item(list, KEMAS_ULANG, "Kemas Ulang", "kemas");
@@ -260,7 +270,7 @@ public class Bootstrap extends JFrame {
 
         JLabel versi = new JLabel("v2.0 • Java Swing");
         versi.setForeground(new Color(0x5E7568));
-        versi.setFont(Theme.font(Font.PLAIN, 11f));
+        versi.setFont(Theme.font(Font.PLAIN, 12f));
         versi.setBorder(BorderFactory.createEmptyBorder(10, 24, 16, 10));
         side.add(versi, BorderLayout.SOUTH);
         return side;
@@ -268,9 +278,9 @@ public class Bootstrap extends JFrame {
 
     private void seksi(JPanel list, String judul) {
         JLabel l = new JLabel(judul);
-        l.setForeground(new Color(0x6F8A7B));
-        l.setFont(Theme.font(Font.BOLD, 10.5f));
-        l.setBorder(BorderFactory.createEmptyBorder(12, 12, 5, 0));
+        l.setForeground(new Color(0x8FA89A));
+        l.setFont(Theme.font(Font.BOLD, 11.5f));
+        l.setBorder(BorderFactory.createEmptyBorder(10, 12, 4, 0));
         l.setAlignmentX(0f);
         list.add(l);
         seksi.put(judul, l);
@@ -298,13 +308,13 @@ public class Bootstrap extends JFrame {
             b.putClientProperty(FlatClientProperties.STYLE,
                     "background:#2E7D5B; foreground:#FFFFFF; borderWidth:0; focusWidth:0; innerFocusWidth:0; arc:10;"
                     + "hoverBackground:#2E7D5B; pressedBackground:#22624A; margin:6,14,6,14");
-            b.setFont(Theme.font(Font.BOLD, 13f));
+            b.setFont(Theme.font(Font.BOLD, 14f));
             ik.setColor(Color.WHITE);
         } else {
             b.putClientProperty(FlatClientProperties.STYLE,
-                    "background:#1C2B24; foreground:#B9C9C0; borderWidth:0; focusWidth:0; innerFocusWidth:0; arc:10;"
+                    "background:#1C2B24; foreground:#D3DED8; borderWidth:0; focusWidth:0; innerFocusWidth:0; arc:10;"
                     + "hoverBackground:#26392F; pressedBackground:#2C4337; margin:6,14,6,14");
-            b.setFont(Theme.font(Font.PLAIN, 13f));
+            b.setFont(Theme.font(Font.PLAIN, 14f));
             ik.setColor(Theme.SIDEBAR_TEXT);
         }
         b.repaint();
@@ -319,7 +329,7 @@ public class Bootstrap extends JFrame {
 
         JLabel kiri = new JLabel(Theme.NAMA_PT + "   •   " + Theme.hariIni());
         Theme.muted(kiri);
-        kiri.setFont(Theme.font(Font.PLAIN, 13f));
+        kiri.setFont(Theme.font(Font.PLAIN, 14f));
         h.add(kiri, BorderLayout.WEST);
 
         JPanel kanan = new JPanel(new FlowLayout(FlowLayout.RIGHT, 12, 0));
@@ -345,7 +355,7 @@ public class Bootstrap extends JFrame {
         lblAvatar.setFont(Theme.font(Font.BOLD, 13f));
 
         lblNama = new JLabel("-");
-        lblNama.setFont(Theme.font(Font.BOLD, 13f));
+        lblNama.setFont(Theme.font(Font.BOLD, 14f));
         lblNama.setForeground(Theme.TEXT);
         lblRole = new JLabel("-");
         Theme.muted(lblRole);

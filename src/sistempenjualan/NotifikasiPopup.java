@@ -90,9 +90,9 @@ public class NotifikasiPopup extends JWindow {
         for (int i = 0; i < max; i++) {
             Notifikasi.Item it = items.get(i);
             Color[] w = Theme.statusColor(Notifikasi.KRITIS.equals(it.level) ? "KRITIS" : "PERINGATAN");
-            JLabel l = new JLabel("<html><div style='width:290px'><b>" + it.barang + "</b> &middot; <span style='color:"
+            JLabel l = new JLabel("<html><div style='width:300px'><b>" + it.barang + "</b> &middot; <span style='color:"
                     + hex(w[0]) + "'>" + it.jenis + "</span><br><span style='color:#6B7280'>" + it.pesan + "</span></div></html>");
-            l.setFont(Theme.font(Font.PLAIN, 12f));
+            l.setFont(Theme.font(Font.PLAIN, 13f));
             l.setBorder(BorderFactory.createEmptyBorder(6, 0, 6, 0));
             l.setAlignmentX(0f);
             list.add(l);

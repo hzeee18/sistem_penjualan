@@ -212,7 +212,7 @@ public class BarangKeluar extends javax.swing.JPanel implements Halaman {
                 m.addRow(new Object[]{r[1], r[2], r[3], r[4]});
             }
             tblRiwayat.setModel(m);
-            Theme.widths(tblRiwayat, 120, 95, 150, 40);
+            Theme.widths(tblRiwayat, 95, 105, 160, 45);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Gagal memuat riwayat: " + e.getMessage());
         }
@@ -338,7 +338,7 @@ public class BarangKeluar extends javax.swing.JPanel implements Halaman {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 70;
+        gridBagConstraints.ipadx = 110;
         gridBagConstraints.weightx = 0.2;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 14, 12);
         pnlForm.add(dcTanggal, gridBagConstraints);
@@ -402,7 +402,7 @@ public class BarangKeluar extends javax.swing.JPanel implements Halaman {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 12);
         pnlForm.add(txtQty, gridBagConstraints);
 
-        btnTambah.setText("+ Tambah ke Daftar");
+        btnTambah.setText("+ Tambah");
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         btnTambahActionPerformed(evt);
@@ -453,7 +453,7 @@ public class BarangKeluar extends javax.swing.JPanel implements Halaman {
         cardInput.add(pnlBawah, java.awt.BorderLayout.SOUTH);
         pnlIsi.add(cardInput, java.awt.BorderLayout.CENTER);
 
-        cardRiwayat.setPreferredSize(new java.awt.Dimension(380, 100));
+        cardRiwayat.setPreferredSize(new java.awt.Dimension(420, 100));
         cardRiwayat.setLayout(new java.awt.BorderLayout(0, 12));
 
         pnlRiwayatAtas.setLayout(new java.awt.BorderLayout(0, 10));

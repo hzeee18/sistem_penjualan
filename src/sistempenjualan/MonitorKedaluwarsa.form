@@ -72,6 +72,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRefreshActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnLacak">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Lacak Batch"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLacakActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JButton" name="btnMusnahkan">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Musnahkan Batch"/>
@@ -324,6 +332,9 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
                 <Component class="javax.swing.JTable" name="tblExp">
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblExpMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

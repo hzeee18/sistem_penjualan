@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 public class SistemPenjualan {
 
     public static void main(String[] args) {
+        System.setProperty("awt.useSystemAAFontSettings", "on");
+        System.setProperty("swing.aatext", "true");
         Theme.setup();
         try {
             Koneksi.koneksi();

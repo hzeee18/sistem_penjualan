@@ -68,7 +68,7 @@ public class Dashboard extends javax.swing.JPanel implements Halaman {
             lblMenipisKet.setText(menipis + " menipis • " + habis + " habis");
             tblStok.setModel(ms);
             Theme.statusColumn(tblStok, 3);
-            Theme.widths(tblStok, 190, 80, 80, 90);
+            Theme.widths(tblStok, 210, 85, 80, 95);
 
             Object[] h = Koneksi.one("SELECT COUNT(*), SUM(tgl_kedaluwarsa <= CURDATE() + INTERVAL ? DAY) FROM batch "
                     + "WHERE qty_sisa > 0 AND tgl_kedaluwarsa >= CURDATE() AND tgl_kedaluwarsa <= CURDATE() + INTERVAL ? DAY", batas[1], batas[0]);
@@ -79,18 +79,18 @@ public class Dashboard extends javax.swing.JPanel implements Halaman {
             lblKedaluwarsa.setText(Theme.angka(k[0]));
             lblKedaluwarsaKet.setText("batch dari " + Theme.angka(k[1]) + " barang, perlu dimusnahkan");
 
-            DefaultTableModel me = Theme.model("No Batch", "Barang", "Sisa", "Kedaluwarsa", "Status");
+            DefaultTableModel me = Theme.model("No Batch", "Barang", "Kedaluwarsa", "Status");
             for (Object[] r : Koneksi.rows(
                     "SELECT bt.no_batch, b.nama, bt.qty_sisa, b.satuan, bt.tgl_kedaluwarsa, DATEDIFF(bt.tgl_kedaluwarsa, CURDATE()) "
                     + "FROM batch bt JOIN m_barang b ON b.id = bt.barang_id "
                     + "WHERE bt.qty_sisa > 0 AND bt.tgl_kedaluwarsa <= CURDATE() + INTERVAL ? DAY "
                     + "ORDER BY bt.tgl_kedaluwarsa LIMIT 20", batas[0])) {
                 long sisa = ((Number) r[5]).longValue();
-                me.addRow(new Object[]{r[0], r[1], Theme.angka(r[2]) + " " + r[3], r[4], Persediaan.statusKedaluwarsa(sisa)});
+                me.addRow(new Object[]{r[0], r[1], new java.text.SimpleDateFormat("dd MMM yy", Theme.ID).format((java.util.Date) r[4]), Persediaan.statusKedaluwarsa(sisa)});
             }
             tblExp.setModel(me);
-            Theme.statusColumn(tblExp, 4);
-            Theme.widths(tblExp, 75, 150, 55, 85, 110);
+            Theme.statusColumn(tblExp, 3);
+            Theme.widths(tblExp, 92, 150, 90, 128);
 
             DefaultTableModel ma = Theme.model("Waktu", "Jenis", "No Batch", "Barang", "Qty", "Referensi", "Oleh");
             for (Object[] r : Koneksi.rows(
@@ -101,7 +101,7 @@ public class Dashboard extends javax.swing.JPanel implements Halaman {
             }
             tblAktivitas.setModel(ma);
             Theme.statusColumn(tblAktivitas, 1);
-            Theme.widths(tblAktivitas, 140, 120, 120, 200, 90, 130, 120);
+            Theme.widths(tblAktivitas, 165, 110, 110, 210, 85, 110, 130);
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Gagal memuat dashboard: " + e.getMessage());
         }

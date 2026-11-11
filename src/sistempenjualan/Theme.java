@@ -42,12 +42,12 @@ public final class Theme {
     public static final Color ACCENT = new Color(0x8B5E3C);
     public static final Color SIDEBAR = new Color(0x1C2B24);
     public static final Color SIDEBAR_HOVER = new Color(0x26392F);
-    public static final Color SIDEBAR_TEXT = new Color(0xB9C9C0);
+    public static final Color SIDEBAR_TEXT = new Color(0xD3DED8);
     public static final Color BG = new Color(0xF3F5F4);
     public static final Color CARD = Color.WHITE;
     public static final Color BORDER = new Color(0xE3E7E5);
     public static final Color TEXT = new Color(0x1F2937);
-    public static final Color MUTED = new Color(0x6B7280);
+    public static final Color MUTED = new Color(0x5F6B7A);
 
     public static final Color DANGER = new Color(0xDC2626);
     public static final Color DANGER_SOFT = new Color(0xFDE8E8);
@@ -65,8 +65,13 @@ public final class Theme {
 
     /** Dipanggil sekali di main() sebelum jendela dibuat. */
     public static void setup() {
-        UIManager.put("defaultFont", new Font("Segoe UI", Font.PLAIN, 13));
+        // Font Inter dibundel (lib/flatlaf-fonts-inter) supaya tampilan sama di semua laptop
+        com.formdev.flatlaf.fonts.inter.FlatInterFont.install();
+        com.formdev.flatlaf.fonts.inter.FlatInterFont.installSemiBold();
+        com.formdev.flatlaf.FlatLaf.setPreferredFontFamily(com.formdev.flatlaf.fonts.inter.FlatInterFont.FAMILY);
+        com.formdev.flatlaf.FlatLaf.setPreferredSemiboldFontFamily(com.formdev.flatlaf.fonts.inter.FlatInterFont.FAMILY_SEMIBOLD);
         FlatLightLaf.setup();
+        UIManager.put("defaultFont", new javax.swing.plaf.FontUIResource(com.formdev.flatlaf.fonts.inter.FlatInterFont.FAMILY, Font.PLAIN, 14));
         UIManager.put("Component.arc", 10);
         UIManager.put("Button.arc", 10);
         UIManager.put("TextComponent.arc", 10);
@@ -103,9 +108,13 @@ public final class Theme {
 
     // ---- font
     public static Font font(int style, float size) {
+        // teks tebal ukuran kecil/sedang pakai Inter SemiBold supaya tidak terlalu "berat" di mata
+        if (style == Font.BOLD && size < 20f) {
+            return new Font(com.formdev.flatlaf.fonts.inter.FlatInterFont.FAMILY_SEMIBOLD, Font.PLAIN, 1).deriveFont(size);
+        }
         Font f = UIManager.getFont("defaultFont");
         if (f == null) {
-            f = new Font("Segoe UI", Font.PLAIN, 13);
+            f = new Font("Dialog", Font.PLAIN, 14);
         }
         return f.deriveFont(style, size);
     }
@@ -117,27 +126,27 @@ public final class Theme {
     }
 
     public static void title(JLabel l) {
-        l.setFont(font(Font.BOLD, 22f));
+        l.setFont(font(Font.BOLD, 24f));
         l.setForeground(TEXT);
     }
 
     public static void subtitle(JLabel l) {
-        l.setFont(font(Font.PLAIN, 13f));
+        l.setFont(font(Font.PLAIN, 14f));
         l.setForeground(MUTED);
     }
 
     public static void section(JLabel l) {
-        l.setFont(font(Font.BOLD, 15f));
+        l.setFont(font(Font.BOLD, 16f));
         l.setForeground(TEXT);
     }
 
     public static void label(JLabel l) {
-        l.setFont(font(Font.BOLD, 12f));
-        l.setForeground(new Color(0x4B5563));
+        l.setFont(font(Font.BOLD, 13f));
+        l.setForeground(new Color(0x374151));
     }
 
     public static void muted(JLabel l) {
-        l.setFont(font(Font.PLAIN, 12f));
+        l.setFont(font(Font.PLAIN, 13f));
         l.setForeground(MUTED);
     }
 
@@ -166,11 +175,11 @@ public final class Theme {
         if (card instanceof RoundedPanel) {
             ((RoundedPanel) card).setAccent(accent);
         }
-        judul.setFont(font(Font.BOLD, 12f));
+        judul.setFont(font(Font.BOLD, 12.5f));
         judul.setForeground(MUTED);
-        nilai.setFont(font(Font.BOLD, 28f));
+        nilai.setFont(font(Font.BOLD, 30f));
         nilai.setForeground(accent);
-        ket.setFont(font(Font.PLAIN, 12f));
+        ket.setFont(font(Font.PLAIN, 13f));
         ket.setForeground(MUTED);
         card.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
     }
@@ -178,7 +187,7 @@ public final class Theme {
     // ---- tombol
     private static void btn(JButton b, String style) {
         b.putClientProperty(FlatClientProperties.STYLE, style);
-        b.setFont(font(Font.BOLD, 13f));
+        b.setFont(font(Font.BOLD, 14f));
         b.setFocusPainted(false);
         b.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
         b.setMargin(new java.awt.Insets(7, 16, 7, 16));
@@ -247,19 +256,19 @@ public final class Theme {
     }
 
     public static void table(JTable t) {
-        t.setRowHeight(34);
+        t.setRowHeight(38);
         t.setShowVerticalLines(false);
         t.setShowHorizontalLines(true);
         t.setGridColor(new Color(0xEEF1EF));
         t.setIntercellSpacing(new java.awt.Dimension(0, 1));
         t.setFillsViewportHeight(true);
         t.setAutoCreateRowSorter(true);
-        t.setFont(font(Font.PLAIN, 13f));
+        t.setFont(font(Font.PLAIN, 14f));
         t.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         JTableHeader h = t.getTableHeader();
-        h.setFont(font(Font.BOLD, 12f));
-        h.setForeground(new Color(0x4B5563));
-        h.setPreferredSize(new java.awt.Dimension(0, 36));
+        h.setFont(font(Font.BOLD, 13f));
+        h.setForeground(new Color(0x374151));
+        h.setPreferredSize(new java.awt.Dimension(0, 40));
         h.setReorderingAllowed(false);
         t.setDefaultRenderer(Object.class, new CellRenderer());
         t.setDefaultRenderer(Number.class, new CellRenderer());
@@ -377,7 +386,7 @@ public final class Theme {
             fg = w[0];
             bg = w[1];
             l.setForeground(fg);
-            l.setFont(font(Font.BOLD, 11.5f));
+            l.setFont(font(Font.BOLD, 12f));
             l.setHorizontalAlignment(SwingConstants.CENTER);
             l.setBorder(BorderFactory.createEmptyBorder(0, 8, 0, 8));
             return l;
@@ -391,7 +400,7 @@ public final class Theme {
             g2.fillRect(0, 0, getWidth(), getHeight());
             int tw = getFontMetrics(getFont()).stringWidth(getText()) + 22;
             int w = Math.min(getWidth() - 8, tw);
-            int h = 22;
+            int h = 24;
             int x = (getWidth() - w) / 2;
             int y = (getHeight() - h) / 2;
             g2.setColor(bg);

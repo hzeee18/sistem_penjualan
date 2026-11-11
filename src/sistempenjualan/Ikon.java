@@ -145,6 +145,13 @@ public class Ikon implements Icon {
                 g2.drawLine(14, 6, 18, 10);
                 g2.drawLine(14, 14, 18, 10);
                 break;
+            case "lacak":
+                g2.drawOval(2, 2, 5, 5);
+                g2.drawOval(13, 8, 5, 5);
+                g2.drawOval(2, 13, 5, 5);
+                g2.drawLine(7, 5, 13, 9);
+                g2.drawLine(7, 15, 13, 12);
+                break;
             case "refresh":
                 g2.drawArc(3, 3, 14, 14, 30, 270);
                 g2.drawLine(17, 3, 17, 8);

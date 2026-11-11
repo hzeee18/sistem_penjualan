@@ -52,7 +52,7 @@ public class Login extends javax.swing.JPanel {
         Theme.primary(btnMasuk);
         btnMasuk.setPreferredSize(new java.awt.Dimension(0, 42));
         Theme.muted(lblInfo);
-        lblInfo.setFont(Theme.font(Font.PLAIN, 11f));
+        lblInfo.setFont(Theme.font(Font.PLAIN, 12.5f));
     }
 
     public void reset() {
